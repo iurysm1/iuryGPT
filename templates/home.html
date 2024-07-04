@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+
+{% block title %}
+    <title>IuryGPT</title>
+{% endblock %}
+{% block scripts%}
+<script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+{% endblock %}
+
+
+{% block content %}
+
+  <h1 class="mt-2">IuryGPT</h1>
+    <div id="mensagens">
+      {% for mensagem in list_messages %}
+        <p class="human">{{mensagem.input}}</p>
+        <p class="ia">{{mensagem.output}}</p>
+      {% endfor %}
+      
+    </div>
+    <form method="POST" id="messageForm" action="/send" data-form >
+      <div class="form-group">
+        <div class="messageBox">
+          <input required="" placeholder="Message..." type="text" id="messageInput" name="messageInput" />
+          <button type="submit" id="sendButton" data-button>
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 664 663">
+              <path
+                fill="none"
+                d="M646.293 331.888L17.7538 17.6187L155.245 331.888M646.293 331.888L17.753 646.157L155.245 331.888M646.293 331.888L318.735 330.228L155.245 331.888"
+              ></path>
+              <path
+                stroke-linejoin="round"
+                stroke-linecap="round"
+                stroke-width="33.67"
+                stroke="#6c6c6c"
+                d="M646.293 331.888L17.7538 17.6187L155.245 331.888M646.293 331.888L17.753 646.157L155.245 331.888M646.293 331.888L318.735 330.228L155.245 331.888"
+              ></path>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </form>
+    <button id="clearChat" name="clearChat" onclick="deleteMessages()" class="btn btn-error" data-delete><i class="bi bi-trash"></i></button>
+
+    
+ 
+{% endblock %}
+
